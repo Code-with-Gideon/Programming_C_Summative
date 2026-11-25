@@ -1,0 +1,7 @@
+transaction_id,product_name,quantity,unit_price,total_amount,transaction_date
+5006,STM32 Dev Board,3,38.00,114.00,2026-11-23
+5001,Arduino Uno Kit,4,24.50,98.00,2026-11-18
+5002,DHT22 Sensor Pack,10,8.20,82.00,2026-11-19
+5003,16x2 LCD Module,6,12.00,72.00,2026-11-20
+5005,Breadboard Jumper Kit,15,4.50,67.50,2026-11-22
+5004,Arduino Uno Kit,2,24.50,49.00,2026-11-21
