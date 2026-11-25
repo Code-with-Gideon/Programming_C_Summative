@@ -1,0 +1,13 @@
+# Compiled binaries and object files
+*.o
+*.out
+*.exe
+
+# Temporary test and runtime outputs
+*.tmp
+test_*.bin
+test_*.csv
+system_health_report_*.txt
+system_monitor_activity.log
+!**/sample_reports/**
+!**/sample_logs/**
