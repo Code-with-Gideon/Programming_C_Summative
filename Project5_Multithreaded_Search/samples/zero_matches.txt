@@ -1,0 +1,5 @@
+Database Indexing & Query Tuning Notes
+B-tree indexes speed up range scans over sorted primary keys without scanning every heap page.
+Write-ahead logging guarantees durability across unexpected power cuts by flushing sequentially.
+Partitioned tables separate historical audit logs from hot transactional workloads.
+Connection pooling bounds concurrent worker sessions so CPU context switches stay predictable.

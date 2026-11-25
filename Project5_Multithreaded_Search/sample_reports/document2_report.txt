@@ -1,0 +1,9 @@
+Document Analysis Report
+--------------------------------------------------
+Input File              : samples/document2.txt
+Search Keyword          : IoT (case-insensitive)
+Total Lines Processed   : 5
+Total Keyword Matches   : 4
+Lines With Match        : 2
+Matching Line Numbers   : 2, 5
+Processing Status       : Completed

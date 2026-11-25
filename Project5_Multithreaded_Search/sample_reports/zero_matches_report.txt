@@ -1,0 +1,9 @@
+Document Analysis Report
+--------------------------------------------------
+Input File              : samples/zero_matches.txt
+Search Keyword          : IoT (case-insensitive)
+Total Lines Processed   : 5
+Total Keyword Matches   : 0
+Lines With Match        : 0
+Matching Line Numbers   : None
+Processing Status       : Completed (keyword not found)

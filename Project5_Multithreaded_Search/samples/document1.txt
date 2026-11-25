@@ -1,0 +1,7 @@
+IoT Field Gateway Notes - Node Cluster A
+Telemetry packets from industrial sensors route through the local IoT broker every 500 milliseconds.
+Low-power microcontrollers sleep between sampling windows to preserve LiFePO4 battery voltage.
+During field calibration, engineers inspect iot heartbeat frames and packet sequence counters.
+Remote firmware updates validate SHA-256 signatures before flashing the embedded partition.
+If an IOT sensor node misses three consecutive acknowledgments, the gateway triggers an alert.
+End-to-end iot diagnostics remain essential for reliable factory telemetry.

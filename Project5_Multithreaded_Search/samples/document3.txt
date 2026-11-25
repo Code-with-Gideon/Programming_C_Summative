@@ -1,0 +1,6 @@
+Systems Programming Lab Summary
+Multi-threading splits independent I/O workloads across separate execution units cleanly.
+POSIX threads allow concurrent file parsing while isolating per-thread output structures.
+Notice how iot devices and IoT dashboards exchange compact binary payloads instead of verbose text.
+When one file fails to open, healthy threads finish their iot reports without halting execution.
+Memory safety requires matching every dynamic malloc or realloc call with a corresponding free.
