@@ -1,0 +1,11 @@
+student_id,first_name,last_name,programme,year_of_study,course_code,course_name,marks_obtained,max_marks
+1003,Grace,Mensah,Software Engineering,2,CS204,Data Structures,47.00,50.00
+1003,Grace,Mensah,Software Engineering,2,CS210,Operating Systems,91.00,100.00
+1001,Amina,Uwimana,Software Engineering,2,CS201,Low-Level C Programming,88.00,100.00
+1001,Amina,Uwimana,Software Engineering,2,CS204,Data Structures,43.00,50.00
+1005,Nadia,Kamau,Computer Engineering,2,EE301,Embedded Systems,79.00,100.00
+1005,Nadia,Kamau,Computer Engineering,2,CS210,Operating Systems,84.00,100.00
+1002,Chinedu,Okafor,Computer Engineering,3,CS201,Low-Level C Programming,72.00,100.00
+1002,Chinedu,Okafor,Computer Engineering,3,EE301,Embedded Systems,69.00,100.00
+1004,Tariq,El-Amin,Computer Science,1,CS201,Low-Level C Programming,41.00,100.00
+1004,Tariq,El-Amin,Computer Science,1,MT102,Discrete Mathematics,22.00,50.00
