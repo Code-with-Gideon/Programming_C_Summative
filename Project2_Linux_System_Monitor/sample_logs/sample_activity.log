@@ -1,0 +1,12 @@
+[2026-11-25 21:02:03] [WARNING] Blocked termination of protected process PID 1 (systemd)
+[2026-11-25 21:02:03] [WARNING] Termination failed: nonexistent PID 999999
+[2026-11-25 21:02:03] [INFO] Inspected system information (host=GIDEON, kernel=6.6.87.2-microsoft-standard-WSL2)
+[2026-11-25 21:02:03] [INFO] CPU check normal: 0.2% (threshold 1%)
+[2026-11-25 21:02:03] [INFO] Memory check normal: 15.6% (582/3733 MB)
+[2026-11-25 21:02:03] [WARNING] Disk threshold exceeded on /usr/lib/wsl/drivers (drivers): 63% >= 50%
+[2026-11-25 21:02:03] [WARNING] Disk threshold exceeded on /mnt/c (C:\): 63% >= 50%
+[2026-11-25 21:02:04] [INFO] Generated system health report at '/tmp/tmp.3DbIbOhjHY/rep/system_health_report_2026-11-25_21-02-03.txt' (warnings=0)
+[2026-11-25 21:02:04] [ERROR] Report failed: unwritable directory '/tmp/tmp.3DbIbOhjHY/locked'
+[2026-11-25 21:02:05] [INFO] Searched running processes for '8312'
+[2026-11-25 21:02:05] [INFO] Terminated process PID 8312 (sleep)
+[2026-11-25 21:02:05] [INFO] Viewed activity log
