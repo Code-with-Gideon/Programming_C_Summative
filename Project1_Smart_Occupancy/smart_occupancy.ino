@@ -42,7 +42,7 @@ struct OccupancyRecord {
 
 struct EventEntry {
     unsigned long timestampMs;
-    EventAction action;
+    int action;
     int countAfter;
 };
 
@@ -97,7 +97,7 @@ static bool allocateOccupancySystem(int capacity) {
     return true;
 }
 
-static const char *actionLabel(EventAction act) {
+static const char *actionLabel(int act) {
     switch (act) {
         case ACT_ENTRY_OK:       return "ENTRY_OK";
         case ACT_EXIT_OK:        return "EXIT_OK";
@@ -140,7 +140,7 @@ static void flushBatchLog() {
     Serial.println(F("Event batch buffer freed and reallocated cleanly."));
 }
 
-static void recordBatchEvent(const OccupancyRecord *rec, unsigned long nowMs, EventAction act) {
+static void recordBatchEvent(const struct OccupancyRecord *rec, unsigned long nowMs, int act) {
     if (rec == NULL || gBatchLog == NULL) {
         return;
     }
@@ -157,7 +157,7 @@ static void recordBatchEvent(const OccupancyRecord *rec, unsigned long nowMs, Ev
     gBatchCount++;
 }
 
-static bool updateButtonDebounced(DebouncedButton *btn, unsigned long nowMs) {
+static bool updateButtonDebounced(struct DebouncedButton *btn, unsigned long nowMs) {
     int raw = digitalRead(btn->pin);
 
     if (raw != btn->lastRaw) {
@@ -176,7 +176,7 @@ static bool updateButtonDebounced(DebouncedButton *btn, unsigned long nowMs) {
     return false;
 }
 
-static void processEntry(OccupancyRecord *rec, unsigned long nowMs) {
+static void processEntry(struct OccupancyRecord *rec, unsigned long nowMs) {
     if (rec == NULL) {
         return;
     }
@@ -202,7 +202,7 @@ static void processEntry(OccupancyRecord *rec, unsigned long nowMs) {
     Serial.println(rec->maxCapacity - rec->currentCount);
 }
 
-static void processExit(OccupancyRecord *rec, unsigned long nowMs) {
+static void processExit(struct OccupancyRecord *rec, unsigned long nowMs) {
     if (rec == NULL) {
         return;
     }
@@ -226,7 +226,7 @@ static void processExit(OccupancyRecord *rec, unsigned long nowMs) {
     Serial.println(rec->maxCapacity - rec->currentCount);
 }
 
-static void updateStatusLEDs(const OccupancyRecord *rec, unsigned long nowMs) {
+static void updateStatusLEDs(const struct OccupancyRecord *rec, unsigned long nowMs) {
     (void)nowMs;
     if (rec == NULL) {
         return;
@@ -237,7 +237,7 @@ static void updateStatusLEDs(const OccupancyRecord *rec, unsigned long nowMs) {
     digitalWrite(PIN_LED_RED, full ? HIGH : LOW);
 }
 
-static void updateLcdDisplay(OccupancyRecord *rec, unsigned long nowMs) {
+static void updateLcdDisplay(struct OccupancyRecord *rec, unsigned long nowMs) {
     char line1[17];
     char line2[17];
     int remaining;
@@ -265,7 +265,7 @@ static void updateLcdDisplay(OccupancyRecord *rec, unsigned long nowMs) {
     gLastLcdUpdateMs = nowMs;
 }
 
-static void printStatusReport(const OccupancyRecord *rec) {
+static void printStatusReport(const struct OccupancyRecord *rec) {
     if (rec == NULL) {
         return;
     }
