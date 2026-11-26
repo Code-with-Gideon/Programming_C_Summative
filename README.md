@@ -27,13 +27,23 @@
 
 1. **Standalone Modular Layout Per Project:** Each project sits in its own directory with its own entry point (`main()` or executable script), separated `.h` / `.c` modules (Projects 3 to 5), build rules, sample data/outputs, automated tests, and technical `README.md`.
 2. **Non-Blocking Embedded Control (Project 1):** Using `millis()` timers for 50 ms button rising-edge debouncing and 250 ms LCD refreshes keeps buttons responsive at all times with zero `delay()` calls. Holding occupancy counters in `calloc()` and flushing 8-event logs via `free()` + re-`malloc()` keeps AVR SRAM bounded and leak-free, while Red LED (`D13`) remains strictly `HIGH` at capacity.
-3. **Zero Optional Package Dependencies & Pipe Safety in Bash (Project 2):** Parsing `/proc/stat` and `/proc/meminfo` directly removes dependency on optional packages like `sysstat`. Under `set -euo pipefail`, switching `| head -n N` to `| awk 'NR<=N'` avoids `SIGPIPE` aborts, and `printf --` prevents `---` section headers from triggering flag errors.
+3. **Zero Optional Package Dependencies & Pipe Safety in Bash (Project 2):** Parsing `/proc/stat` and `/proc/meminfo` directly removes dependency on optional packages like `sysstat`. `system_monitor.sh` sets `set -u`, while testing under `test_monitor.sh`'s `set -euo pipefail` showed that switching `| head -n N` to `| awk 'NR<=N'` avoids `SIGPIPE` aborts, and `printf --` prevents `---` section headers from triggering flag errors.
 4. **Explicit Heap Ownership and Hand-Written Sorting (Projects 3 & 4):** Both C console systems grow and shrink arrays dynamically with `calloc`/`realloc`/`free`, validate dates/marks/IDs on input, implement in-place Selection Sort directly over element pointers, and store both binary formats (`SREC`, `STXN`) and CSV exports.
 5. **Lock-Free Per-Thread Isolation (Project 5):** Giving each `pthread` its own `FileTask` struct and private `<filename>_report.txt` output removes shared mutable state during scanning, preventing race conditions without mutex contention. Missing files capture `strerror(errno)` locally while sibling threads finish normally.
 
 ---
 
 ## Quick Verification Guide (Linux / WSL)
+
+Run the unified repository test runner across all 5 projects:
+
+```bash
+chmod +x verify_all.sh
+./verify_all.sh          # Standard strict C99 (-Wall -Wextra -Werror) + Bash suite
+./verify_all.sh --asan   # AddressSanitizer + LeakSanitizer + UBSan memory checks (Projects 1, 3, 4, 5)
+```
+
+Or run each project individually:
 
 ```bash
 # Project 1 host C logic core check

@@ -11,3 +11,13 @@ system_health_report_*.txt
 system_monitor_activity.log
 !**/sample_reports/**
 !**/sample_logs/**
+
+# Compiled Linux binaries without extension
+Project3_Student_Analytics/student_analytics
+Project3_Student_Analytics/test_p3
+Project4_Sales_Analysis/sales_analysis
+Project4_Sales_Analysis/test_p4
+Project5_Multithreaded_Search/document_analyzer
+
+# Runtime reports directory
+Project2_Linux_System_Monitor/reports/

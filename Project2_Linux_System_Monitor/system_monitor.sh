@@ -405,6 +405,21 @@ generate_health_report() {
 
         printf -- "--- Disk Utilization Summary (Threshold: %d%%) ---\n" "$DISK_THRESHOLD"
         df -P -h -x tmpfs -x devtmpfs -x squashfs -x efivarfs 2>/dev/null || df -P -h
+
+        local disk_warnings=0 fs size used avail pct mount pct_num
+        while read -r fs size used avail pct mount; do
+            pct_num="${pct%%%}"
+            if [[ "$pct_num" =~ ^[0-9]+$ ]] && [ "$pct_num" -ge "$DISK_THRESHOLD" ]; then
+                printf "[WARNING] Filesystem '%s' mounted at '%s' is at %s%% (>= %d%%)\n" \
+                       "$fs" "$mount" "$pct_num" "$DISK_THRESHOLD"
+                warnings_found=$((warnings_found + 1))
+                disk_warnings=$((disk_warnings + 1))
+            fi
+        done < <( (df -P -h -x tmpfs -x devtmpfs -x squashfs -x efivarfs 2>/dev/null || df -P -h) | awk 'NR>1 {print $1, $2, $3, $4, $5, $6}' )
+        if [ "$disk_warnings" -eq 0 ]; then
+            printf "Disk Alert Status: OK (all filesystems below %d%%)\n" "$DISK_THRESHOLD"
+        fi
+
         printf "\nReport Threshold Warnings Detected: %d\n" "$warnings_found"
     } > "$report_path"; then
         printf "Error: Failed writing report to '%s'.\n" "$report_path" >&2

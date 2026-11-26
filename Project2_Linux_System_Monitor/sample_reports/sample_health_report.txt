@@ -1,10 +1,10 @@
 Linux System Health and Resource Report
 ==============================================================
-Generated On     : 2026-11-25 21:02:04 SAST
+Generated On     : 2026-11-26 23:33:16 SAST
 Student ID       : 1376251039 (Erioluwa Gideon Olowoyo)
 Hostname         : GIDEON
 Kernel           : Linux 6.6.87.2-microsoft-standard-WSL2
-Uptime           : up 6 hours, 15 minutes
+Uptime           : up 21 hours, 48 minutes
 
 --- CPU Summary (Threshold: 1%) ---
 Current CPU Usage: 0.2%
@@ -12,33 +12,35 @@ Alert Status     : OK
 
 Top 5 CPU Processes:
     PID USER     %CPU %MEM COMMAND
-   8235 gideon    9.5  0.1 bash
-    617 systemd+  1.0  0.2 redis-server
-   8227 root      0.6  0.1 systemd-udevd
-   8233 root      0.5  0.1 systemd-udevd
-   8234 root      0.5  0.1 systemd-udevd
+  26155 gideon    6.5  0.0 bash
+    617 systemd+  1.1  0.2 redis-server
+  26139 gideon    1.0  0.0 bash
+    248 root      0.4  1.2 containerd
+  26100 root      0.4  0.3 wsl-pro-service
 
 --- Memory Summary (Threshold: 50%) ---
-Total / Used / Avail: 3733 MB / 585 MB / 3148 MB (15.7%)
+Total / Used / Avail: 3733 MB / 614 MB / 3119 MB (16.4%)
 Alert Status     : OK
 
 Top 5 Memory Processes:
     PID USER     %MEM %CPU COMMAND
-    367 root      2.1  0.1 dockerd
-    618 70        1.4  0.0 postgres
-    248 root      1.2  0.2 containerd
+    367 root      2.1  0.3 dockerd
+    618 70        1.4  0.1 postgres
+    248 root      1.2  0.4 containerd
     752 70        0.5  0.0 postgres
     284 root      0.5  0.0 unattended-upgr
 
 --- Disk Utilization Summary (Threshold: 50%) ---
 Filesystem      Size  Used Avail Use% Mounted on
 none            1.9G     0  1.9G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
-drivers         476G  297G  180G  63% /usr/lib/wsl/drivers
+drivers         476G  301G  176G  64% /usr/lib/wsl/drivers
 /dev/sdd       1007G  4.7G  952G   1% /
 none            1.9G     0  1.9G   0% /usr/lib/wsl/lib
 rootfs          1.9G  2.7M  1.9G   1% /init
 none            1.9G   76K  1.9G   1% /mnt/wslg/versions.txt
 none            1.9G   76K  1.9G   1% /mnt/wslg/doc
-C:\             476G  297G  180G  63% /mnt/c
+C:\             476G  301G  176G  64% /mnt/c
+[WARNING] Filesystem 'drivers' mounted at '/usr/lib/wsl/drivers' is at 64% (>= 50%)
+[WARNING] Filesystem 'C:\' mounted at '/mnt/c' is at 64% (>= 50%)
 
-Report Threshold Warnings Detected: 0
+Report Threshold Warnings Detected: 2

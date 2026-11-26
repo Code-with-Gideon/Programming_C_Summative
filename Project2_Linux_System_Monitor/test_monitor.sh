@@ -43,6 +43,9 @@ mkdir -p "$REPORT_SUB"
 generate_health_report <<< "$REPORT_SUB"
 REPORT_FILE="$(ls -1 "$REPORT_SUB"/system_health_report_*.txt | awk 'NR==1')"
 cp -f "$REPORT_FILE" "$P2_DIR/sample_reports/sample_health_report.txt"
+if grep -q "\[WARNING\]" "$P2_DIR/sample_reports/sample_health_report.txt"; then
+    grep -Eq "Report Threshold Warnings Detected: [1-9][0-9]*" "$P2_DIR/sample_reports/sample_health_report.txt"
+fi
 
 echo "[4/5] Testing unwritable directory handling..."
 mkdir -p "$TMP_WORK/locked"

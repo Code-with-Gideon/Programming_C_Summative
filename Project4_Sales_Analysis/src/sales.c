@@ -147,6 +147,7 @@ void op_display_transactions(const SalesLedger *ledger) {
 void op_update_transaction(SalesLedger *ledger) {
     int id;
     Transaction *tx;
+    Transaction staged;
     char buf[PROD_NAME_LEN];
     int qty;
     double price;
@@ -166,13 +167,14 @@ void op_update_transaction(SalesLedger *ledger) {
         return;
     }
 
+    staged = *tx;
     printf("Updating Tx #%d (Product: %s, Qty: %d, Unit Price: %.2f, Date: %s)\n",
            tx->transaction_id, tx->product_name, tx->quantity, tx->unit_price, tx->transaction_date);
 
-    printf("New Product Name (Enter to keep '%s'): ", tx->product_name);
+    printf("New Product Name (Enter to keep '%s'): ", staged.product_name);
     if (read_line_trimmed(buf, PROD_NAME_LEN) && buf[0] != '\0') {
-        strncpy(tx->product_name, buf, PROD_NAME_LEN - 1);
-        tx->product_name[PROD_NAME_LEN - 1] = '\0';
+        strncpy(staged.product_name, buf, PROD_NAME_LEN - 1);
+        staged.product_name[PROD_NAME_LEN - 1] = '\0';
     }
 
     if (read_int_range("New Quantity Sold (1 - 1000000): ", 1, 1000000, &qty) <= 0) {
@@ -184,20 +186,21 @@ void op_update_transaction(SalesLedger *ledger) {
         return;
     }
 
-    tx->quantity = qty;
-    tx->unit_price = price;
-    tx->total_amount = (double)qty * price;
+    staged.quantity = qty;
+    staged.unit_price = price;
+    staged.total_amount = (double)qty * price;
 
-    printf("New Date YYYY-MM-DD (Enter to keep '%s'): ", tx->transaction_date);
+    printf("New Date YYYY-MM-DD (Enter to keep '%s'): ", staged.transaction_date);
     if (read_line_trimmed(buf, DATE_STR_LEN) && buf[0] != '\0') {
         if (validate_iso_date(buf)) {
-            strncpy(tx->transaction_date, buf, DATE_STR_LEN - 1);
-            tx->transaction_date[DATE_STR_LEN - 1] = '\0';
+            strncpy(staged.transaction_date, buf, DATE_STR_LEN - 1);
+            staged.transaction_date[DATE_STR_LEN - 1] = '\0';
         } else {
-            printf("Invalid date entered; keeping existing date '%s'.\n", tx->transaction_date);
+            printf("Invalid date entered; keeping existing date '%s'.\n", staged.transaction_date);
         }
     }
 
+    *tx = staged;
     printf("Updated Tx #%d. New total: %.2f.\n", tx->transaction_id, tx->total_amount);
 }
 
