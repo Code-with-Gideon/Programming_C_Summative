@@ -3,7 +3,8 @@
 **Student:** Erioluwa Gideon Olowoyo  
 **Student ID:** 1376251039  
 **Programme:** BSc (Hons) Software Engineering, African Leadership University  
-**Repository:** https://github.com/Code-with-Gideon/Programming_C_Summative
+**Repository:** https://github.com/Code-with-Gideon/Programming_C_Summative  
+**Project 1 Live Simulation:** [Open in Tinkercad](https://www.tinkercad.com/things/5wDUrUt1VvU-programmingcsummative/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=BY5Ajtju3cqu1TmXfveYNvcJyJE61GWgE0YOFlfred4)
 
 ![Summative Architecture Overview](assets/summative_architecture.png)
 

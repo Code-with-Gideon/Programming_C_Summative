@@ -1,10 +1,15 @@
 # Project 1: Smart Occupancy Monitoring and Access Control System
 
 **Platform:** Arduino Uno R3 (Tinkercad Simulation + Host C Logic Verification)  
+**Live Tinkercad Simulation:** [Open Circuit in Tinkercad](https://www.tinkercad.com/things/5wDUrUt1VvU-programmingcsummative/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=BY5Ajtju3cqu1TmXfveYNvcJyJE61GWgE0YOFlfred4)  
 **Source Files:**
 - `smart_occupancy.ino`: Arduino controller sketch driving buttons, LEDs, 16x2 LCD, and Serial commands
 - `wiring_guide.md`: Tinkercad breadboard & 16x2 LCD pin map + simulation checklist
 - `logic_test/occupancy_core.h`, `occupancy_core.c`, `test_occupancy.c`: Host C logic unit tests
+
+![Live Tinkercad Simulation (10/10 FULL, Red LED ON, Serial Batch Flush)](../assets/project1_tinkercad_live.png)
+
+![Tinkercad Electrical Schematic](../assets/project1_tinkercad_schematic.png)
 
 ---
 
